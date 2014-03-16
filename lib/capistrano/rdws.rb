@@ -2,8 +2,8 @@
 
 # require 'capistrano/rails'
 # require "capistrano/rdws/hey"
-# require "capistrano/rdws/unicorn"
-load File.expand_path("../tasks/unicorn.rake", __FILE__)
+require "capistrano/rdws/unicorn"
+# load File.expand_path("../tasks/unicorn.rake", __FILE__)
 
 # module Capistrano
 #   module Rdws
