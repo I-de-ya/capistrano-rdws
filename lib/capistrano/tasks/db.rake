@@ -1,7 +1,5 @@
 namespace :db do
-
   namespace :data do
-
     desc 'Make yaml_db dump'
     task :dump do
       on roles(:db) do

@@ -30,6 +30,8 @@ List of tasks:
     $ cap unicorn:force_stop
     $ cap unicorn:restart
 
+    $ cap logs:tail[logfile]
+
 TODO: Write usage instructions here
 
 ## Contributing
