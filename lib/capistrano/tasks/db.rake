@@ -1,6 +1,8 @@
 namespace :db do
 
   namespace :data do
+
+    desc 'Make yaml_db dump'
     task :dump do
       on roles(:db) do
         within release_path do
@@ -12,6 +14,7 @@ namespace :db do
     end
   end
 
+  desc 'create db'
   task :create do
     on roles(:db) do
       within release_path do

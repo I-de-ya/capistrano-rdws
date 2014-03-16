@@ -1,4 +1,5 @@
 namespace :release do
+  desc "apply all release tasks"
   task :pack do
     on roles(:app) do
       within release_path do
