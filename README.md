@@ -32,7 +32,11 @@ List of tasks:
 
     $ cap logs:tail[logfile]
 
-TODO: Write usage instructions here
+## TODO
+
+1. Test db existance for 'cap db:create'
+2. Add task for synchronising public/uploads and public/system
+3. Add task for download fresh dump (from yaml_db)
 
 ## Contributing
 
