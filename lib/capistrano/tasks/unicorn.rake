@@ -1,6 +1,6 @@
 namespace :unicorn do
-  pid_path = "#{shared_path}/pids"
-  unicorn_pid = "#{pid_path}/unicorn.pid"
+  pid_path = "#{fetch(:shared_path)}/pids"
+  unicorn_pid = "#{fetch(:pid_path)}/unicorn.pid"
 
   def run_unicorn
     within release_path do
