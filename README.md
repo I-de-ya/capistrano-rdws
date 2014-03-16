@@ -18,6 +18,18 @@ Or install it yourself as:
 
 ## Usage
 
+List of tasks:
+
+    $ cap db:data:dump
+    $ cap db:create
+
+    $ cap release:pack
+
+    $ cap unicorn:start
+    $ cap unicorn:stop
+    $ cap unicorn:force_stop
+    $ cap unicorn:restart
+
 TODO: Write usage instructions here
 
 ## Contributing
