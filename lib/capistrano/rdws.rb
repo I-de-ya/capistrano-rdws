@@ -1,7 +1,6 @@
 # require "capistrano/rdws/version"
-
-require 'capistrano/rails'
 require "capistrano/rdws/unicorn"
+require "capistrano/rdws/db"
 
 # module Capistrano
 #   module Rdws
