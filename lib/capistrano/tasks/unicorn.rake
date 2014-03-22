@@ -6,9 +6,6 @@ end
 
 
 namespace :unicorn do
-  # pid_path = "#{current_path}/tmp/pids"
-  # unicorn_pid = "#{pid_path}/unicorn.pid"
-  unicorn_pid = fetch(:unicorn_pid)
 
   def run_unicorn
     within release_path do
@@ -35,9 +32,9 @@ namespace :unicorn do
   desc 'Force stop unicorn (kill -9)'
   task :force_stop do
     on roles(:app) do
-      if test "[ -f #{unicorn_pid} ]"
-        execute :kill, "-9 `cat #{unicorn_pid}`"
-        execute :rm, unicorn_pid
+      if test "[ -f #{fetch(:unicorn_pid)} ]"
+        execute :kill, "-9 `cat #{fetch(:unicorn_pid)}`"
+        execute :rm, fetch(:unicorn_pid)
       end
     end
   end
@@ -45,8 +42,8 @@ namespace :unicorn do
   desc 'Restart unicorn'
   task :restart do
     on roles(:app) do
-      if test "[ -f #{unicorn_pid} ]"
-        execute :kill, "-USR2 `cat #{unicorn_pid}`"
+      if test "[ -f #{fetch(:unicorn_pid)} ]"
+        execute :kill, "-USR2 `cat #{fetch(:unicorn_pid)}`"
       else
         run_unicorn
       end
