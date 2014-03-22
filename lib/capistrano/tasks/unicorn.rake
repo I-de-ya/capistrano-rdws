@@ -1,6 +1,14 @@
+namespace :load do
+  task :defaults do
+    set :unicorn_pid, -> { File.join(current_path, "tmp", "pids", "unicorn.pid") }
+  end
+end
+
+
 namespace :unicorn do
-  pid_path = "#{shared_path}/tmp/pids"
-  unicorn_pid = "#{pid_path}/unicorn.pid"
+  # pid_path = "#{current_path}/tmp/pids"
+  # unicorn_pid = "#{pid_path}/unicorn.pid"
+  unicorn_pid = fetch(:unicorn_pid)
 
   def run_unicorn
     within release_path do
