@@ -1,6 +1,6 @@
 namespace :load do
   task :defaults do
-    set :unicorn_pid, -> { File.join(fetch(:current_path), "tmp", "pids", "unicorn.pid") }
+    set :unicorn_pid, -> { current_path, "tmp", "pids", "unicorn.pid") }
   end
 end
 
@@ -26,8 +26,8 @@ namespace :unicorn do
   desc 'Stop unicorn'
   task :stop do
     on roles(:app) do
-      if test "[ -f #{unicorn_pid} ]"
-        execute :kill, "-QUIT `cat #{unicorn_pid}`"
+      if test "[ -f #{fetch(:unicorn_pid)} ]"
+        execute :kill, "-QUIT `cat #{fetch(:unicorn_pid)}`"
       end
     end
   end
