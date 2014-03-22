@@ -1,6 +1,6 @@
 namespace :load do
   task :defaults do
-    set :unicorn_pid, -> { File.join(current_path, "tmp", "pids", "unicorn.pid") }
+    set :unicorn_pid, -> { File.join(fetch(:current_path), "tmp", "pids", "unicorn.pid") }
   end
 end
 
