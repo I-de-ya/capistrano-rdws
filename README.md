@@ -1,6 +1,6 @@
 # Capistrano::Rdws
 
-TODO: Write a gem description
+Bunch of capistrano v3.x tasks
 
 ## Installation
 
@@ -44,12 +44,11 @@ Effect of `cap db:data:dump` task plus download `data.yml` into local `db/` appl
 
     $ cap db:data:fetch_fresh_dump
 
-
 ## TODO
 
 1. Test db existance for 'cap db:create'
-2. Add task for synchronising public/uploads and public/system
-3. Add task for download fresh dump (from yaml_db)
+2. Add task for synchronising public/uploads and public/system (between any 2 environments)
+3. Add task for download fresh dump (with yaml_db) from production to staging
 
 ## Contributing
 
