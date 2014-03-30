@@ -35,6 +35,7 @@ List of tasks:
 
 ### Data tasks
 Make rake db:data:dump on server and download data.yml into local db/ application directory:
+
     $ cap db:data:fetch_fresh_dump
 
 
