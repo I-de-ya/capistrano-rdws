@@ -40,7 +40,7 @@ Make `rake db:data:dump` task on server:
 
     $ cap db:data:dump
 
-Effect of `cap db:data:dump` and download `data.yml` into local `db/` application directory:
+Effect of `cap db:data:dump` task plus download `data.yml` into local `db/` application directory:
 
     $ cap db:data:fetch_fresh_dump
 
