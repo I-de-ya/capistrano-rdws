@@ -34,7 +34,7 @@ List of tasks:
     $ cap logs:tail[logfile]
 
 ### Data tasks
-Make "rake db:data:dump" task on server and download `data.yml` into local `db/` application directory:
+Make `rake db:data:dump` task on server and download `data.yml` into local `db/` application directory:
 
     $ cap db:data:fetch_fresh_dump
 
