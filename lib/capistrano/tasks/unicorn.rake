@@ -4,7 +4,6 @@ namespace :load do
   end
 end
 
-
 namespace :unicorn do
 
   def run_unicorn

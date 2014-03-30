@@ -10,6 +10,19 @@ namespace :db do
         end
       end
     end
+
+    desc 'Make yaml_db dump and copy it on development machine'
+    task :fetch_fresh_dump do
+      invoke "db:data:dump"
+
+      user = roles(:web)[0].user
+      hostname = roles(:web)[0].hostname
+      port = fetch(:ssh_options)[:port]
+
+      run_locally do
+        execute "scp -P #{port} #{user}@#{hostname}:#{current_path}/db/data.yml db/"
+      end
+    end
   end
 
   desc 'create db'
