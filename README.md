@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-List of tasks:
+Full list of tasks (description of each below):
 
     $ cap db:data:dump
     $ cap db:data:fetch_fresh_dump
