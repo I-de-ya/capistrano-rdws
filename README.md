@@ -21,6 +21,7 @@ Or install it yourself as:
 List of tasks:
 
     $ cap db:data:dump
+    $ cap db:data:fetch_fresh_dump
     $ cap db:create
 
     $ cap release:pack
@@ -31,6 +32,11 @@ List of tasks:
     $ cap unicorn:restart
 
     $ cap logs:tail[logfile]
+
+### Data tasks
+Make rake db:data:dump on server and download data.yml into local db/ application directory:
+    $ cap db:data:fetch_fresh_dump
+
 
 ## TODO
 
