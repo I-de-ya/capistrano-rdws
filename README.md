@@ -23,6 +23,7 @@ Full list of tasks (description of each below):
     $ cap db:data:dump
     $ cap db:data:fetch_fresh_dump
     $ cap db:create
+    $ cap db:reset_db
 
     $ cap release:pack
 
