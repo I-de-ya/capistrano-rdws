@@ -48,8 +48,8 @@ namespace :db do
         with rails_env: fetch(:stage) do
           # add test for existing db
           # if test
-          ask(:make_reset_db, "what")
-          if fetch(:make_reset_db) == "yes"
+          ask(:make_reset_db?, "yes|y|да|д")
+          if %(yes y д да).include? fetch(:make_reset_db?)
             execute :rake, "db:reset_db"
           end
           # else
