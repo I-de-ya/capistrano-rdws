@@ -42,13 +42,14 @@ namespace :db do
 
   desc 'reset db'
   task :reset_db do
-    ask(:make_reset_db?, "really make reset_db?")
 
     on roles(:db) do
       within release_path do
         with rails_env: fetch(:stage) do
           # add test for existing db
           # if test
+          ask(:make_reset_db?, "really make reset_db?")
+
           execute :rake, "db:reset_db"
           # else
           # end
