@@ -1,3 +1,4 @@
+# encoding: utf-8
 namespace :load do
   task :defaults do
     set :unicorn_pid, -> { "#{current_path}/tmp/pids/unicorn.pid" }
