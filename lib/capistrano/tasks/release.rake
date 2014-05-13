@@ -1,3 +1,4 @@
+# encoding: utf-8
 namespace :release do
   desc "apply all release tasks"
   task :pack do
