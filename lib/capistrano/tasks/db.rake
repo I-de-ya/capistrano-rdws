@@ -1,3 +1,4 @@
+# encoding: utf-8
 namespace :db do
   namespace :data do
     desc 'Make yaml_db dump'
