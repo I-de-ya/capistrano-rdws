@@ -1,3 +1,4 @@
+# encoding: utf-8
 namespace :logs do
   desc "tail log file from shared_path/log/logfile.log, e.g. 'rake logs:tail[logfile]'"
   task :tail, :file do |t, args|
