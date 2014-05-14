@@ -5,7 +5,7 @@ namespace :db do
     task :dump do
       on roles(:db) do
         within release_path do
-          with rails_env: fetch(:stage) do
+          with rails_env: fetch(:rails_env) do
             execute :rake, "db:data:dump"
           end
         end
@@ -30,7 +30,7 @@ namespace :db do
   task :create do
     on roles(:db) do
       within release_path do
-        with rails_env: fetch(:stage) do
+        with rails_env: fetch(:rails_env) do
           # add test for existing db
           # if test
           execute :rake, "db:create"
@@ -46,7 +46,7 @@ namespace :db do
 
     on roles(:db) do
       within release_path do
-        with rails_env: fetch(:stage) do
+        with rails_env: fetch(:rails_env) do
           # add test for existing db
           # if test
           ask(:make_reset_db?, "yes[y]да[д]")
