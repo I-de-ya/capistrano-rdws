@@ -6,7 +6,7 @@ Bunch of capistrano v3.x tasks
 
 Add this line to your application's Gemfile:
 
-    gem 'capistrano-rdws'
+    gem 'capistrano-rdws', github: "I-de-ya/capistrano-rdws"
 
 And then execute:
 
