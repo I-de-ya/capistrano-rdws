@@ -19,9 +19,11 @@ namespace :db do
       user = roles(:web)[0].user
       hostname = roles(:web)[0].hostname
       port = fetch(:ssh_options)[:port]
+      port_string = "-P #{port}" if port.present?
+      scp_command = ["scp", port_string, "#{user}@#{hostname}:#{current_path}/db/data.yml db/"].compact.join(' ')
 
       run_locally do
-        execute "scp -P #{port} #{user}@#{hostname}:#{current_path}/db/data.yml db/"
+        execute scp_command
       end
     end
   end
