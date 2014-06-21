@@ -14,6 +14,7 @@ namespace :db do
 
     desc 'Make yaml_db dump and copy it on development machine'
     task :fetch_fresh_dump do
+      require 'active_support/all'
       invoke "db:data:dump"
 
       user = roles(:web)[0].user
