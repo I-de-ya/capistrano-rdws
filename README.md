@@ -54,6 +54,7 @@ Effect of `cap db:data:dump` task plus download `data.yml` into local `db/` appl
 3. Add task for download fresh dump (with yaml_db) from production to staging
 4. Add diagnostic tasks for informing about free disc space (and maybe other metrics).
 5. Change question in `cap db:reset_db` task
+6. Add diagnostic task for informing about number of releases and size of each (or maybe total release size) and size of /shared
 
 ## Contributing
 
