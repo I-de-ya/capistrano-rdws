@@ -6,19 +6,19 @@ Bunch of capistrano v3.x tasks
 
 Add this line to your application's Gemfile:
 
-    gem 'capistrano-rdws', '0.0.10', github: 'I-de-ya/capistrano-rdws'
+    gem 'capistrano-rdws', '0.0.11', github: 'I-de-ya/capistrano-rdws'
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Or install it yourself as (but freshier version of gem is on github, not rubygems.org, better use Gemfile):
 
     $ gem install capistrano-rdws
 
 ## Usage
 
-Full list of tasks (description of each below):
+Full list of tasks (some of them are descripted below):
 
     $ cap db:data:dump
     $ cap db:data:fetch_fresh_dump
@@ -33,6 +33,8 @@ Full list of tasks (description of each below):
     $ cap unicorn:restart
 
     $ cap logs:tail[logfile]
+
+    $ cap system:check_free_space
 
 ### Db tasks
 
