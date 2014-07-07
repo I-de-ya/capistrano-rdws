@@ -9,7 +9,7 @@ namespace :unicorn do
 
   def run_unicorn
     within release_path do
-      execute :bundle, "exec unicorn -D -c config/unicorn.rb -E #{fetch(:rails_env)}"
+      execute :bundle, "exec unicorn -D -c #{current_path}/config/unicorn.rb -E #{fetch(:rails_env)}"
     end
   end
 
