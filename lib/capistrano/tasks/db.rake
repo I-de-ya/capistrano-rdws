@@ -14,7 +14,7 @@ namespace :db do
 
     desc 'Make yaml_db load'
     task :load do
-      ask(:confirm, "Вы действительно хотите залить новую базу на сервер #{fetch(:stage)}? (Это уничтожит все текущие данные на сервере) /  Do you really want to deploy data.yml on #{fetch(:stage)} stage? (It will destroy all previous data) ** yes[y]да[д] **")
+      ask(:confirm, "Вы действительно хотите залить новую базу на сервер #{fetch(:stage)}? (Это уничтожит все текущие данные на сервере) \nDo you really want to deploy data.yml on #{fetch(:stage)} stage? (It will destroy all previous data) ** yes[y]да[д] **")
 
       on roles(:db) do
         within release_path do
@@ -94,7 +94,7 @@ namespace :db do
         with rails_env: fetch(:rails_env) do
           # add test for existing db
           # if test
-          ask(:make_reset_db?, "Вы действительно хотите сделать 'rake db:reset_db' на серверах #{fetch(:stage)}? Это удалит все текущие данные и заменит их на data.yml /  Do you really want to do 'rake db:reset_db' on #{fetch(:stage)} stage? (It will destroy all previous data and replace it with data.yml) ** yes[y]да[д] **")
+          ask(:make_reset_db?, "Вы действительно хотите сделать 'rake db:reset_db' на серверах #{fetch(:stage)}? Это удалит все текущие данные и заменит их на data.yml \nDo you really want to do 'rake db:reset_db' on #{fetch(:stage)} stage? (It will destroy all previous data and replace it with data.yml) ** yes[y]да[д] **")
           if %(yes y д да).include? fetch(:make_reset_db?)
             execute :rake, "db:reset_db"
           end
