@@ -19,7 +19,8 @@ namespace :db do
       on roles(:db) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            if %(yes y д да).include? fetch(:confirm?)
+
+            if %(yes y д да).include? fetch(:confirm)
               execute :rake, "db:data:load"
             end
           end
