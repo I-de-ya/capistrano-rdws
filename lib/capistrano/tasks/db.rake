@@ -19,7 +19,6 @@ namespace :db do
       on roles(:db) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-
             if %(yes y д да).include? fetch(:confirm)
               execute :rake, "db:data:load"
             end
@@ -28,10 +27,9 @@ namespace :db do
       end
     end
 
-    desc 'Make yaml_db dump and copy it on development machine'
-    task :fetch_fresh_dump do
+    desc 'Copy data.yml from local machine to web server'
+    task :download_dump do
       require 'active_support/all'
-      invoke "db:data:dump"
 
       user = roles(:web)[0].user
       hostname = roles(:web)[0].hostname
@@ -44,8 +42,8 @@ namespace :db do
       end
     end
 
-    desc 'Copy data.yml from local machine to web server and load data into db'
-    task :deploy_fresh_dump do
+    desc 'Copy data.yml from local machine to web server'
+    task :upload_dump do
 
       require 'active_support/all'
 
@@ -58,7 +56,18 @@ namespace :db do
       run_locally do
         execute scp_command
       end
-      invoke "db:data:load"
+    end
+
+    desc 'Make yaml_db dump and copy it onto development machine'
+    task :fetch_fresh_dump do
+      invoke "db:data:dump"
+      invoke "db:data:download_dump"
+    end
+
+    desc 'Copy data.yml from local machine to web server and invoke reset_db task'
+    task :deploy_fresh_dump do
+      invoke 'db:data:upload_dump'
+      invoke 'db:reset_db'
     end
   end
 
@@ -85,7 +94,7 @@ namespace :db do
         with rails_env: fetch(:rails_env) do
           # add test for existing db
           # if test
-          ask(:make_reset_db?, "yes[y]да[д]")
+          ask(:make_reset_db?, "Вы действительно хотите сделать 'rake db:reset_db' на серверах #{fetch(:stage)}? Это удалит все текущие данные и заменит их на data.yml /  Do you really want to do 'rake db:reset_db' on #{fetch(:stage)} stage? (It will destroy all previous data and replace it with data.yml) ** yes[y]да[д] **")
           if %(yes y д да).include? fetch(:make_reset_db?)
             execute :rake, "db:reset_db"
           end
