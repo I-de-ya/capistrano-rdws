@@ -14,10 +14,14 @@ namespace :db do
 
     desc 'Make yaml_db load'
     task :load do
+      ask(:confirm, "Вы действительно хотите залить новую базу на сервер #{fetch(:stage)}? (Это уничтожит все текущие данные на сервере) /  Do you really want to deploy data.yml on #{fetch(:stage)} stage? (It will destroy all previous data) ** yes[y]да[д] **")
+
       on roles(:db) do
         within release_path do
           with rails_env: fetch(:rails_env) do
-            execute :rake, "db:data:load"
+            if %(yes y д да).include? fetch(:confirm?)
+              execute :rake, "db:data:load"
+            end
           end
         end
       end
@@ -41,7 +45,6 @@ namespace :db do
 
     desc 'Copy data.yml from local machine to web server and load data into db'
     task :deploy_fresh_dump do
-      ask(:confirm, "Вы действительно хотите залить новую базу на сервер #{fetch(:stage)}? (Это уничтожит все текущие данные на сервере) /  Do you really want to deploy data.yml on #{fetch(:stage)} stage? (It will destroy all previous data) ** yes[y]да[д] **")
 
       require 'active_support/all'
 
@@ -51,12 +54,10 @@ namespace :db do
       port_string = "-P #{port}" if port.present?
       scp_command = ["scp", port_string, "db/data.yml #{user}@#{hostname}:#{current_path}/db/"].compact.join(' ')
 
-      if %(yes y д да).include? fetch(:confirm?)
-        run_locally do
-          execute scp_command
-        end
-        invoke "db:data:load"
+      run_locally do
+        execute scp_command
       end
+      invoke "db:data:load"
     end
   end
 
