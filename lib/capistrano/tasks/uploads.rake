@@ -25,19 +25,23 @@ namespace :uploads do
       "#{user}@#{hostname}:#{shared_path}/public"
     end
 
+    def local_public_path
+      'public'
+    end
+
     def transmitted_folder(custom_folder=nil)
       custom_folder.presence || 'uploads'
     end
 
     task :from, :folder do |t, args|
       run_locally do
-        execute "rsync -azvv -e '#{ssh_string}' #{remote_public_path}/#{transmitted_folder(args[:folder])} public/"
+        execute "rsync -azvv -e '#{ssh_string}' #{remote_public_path}/#{transmitted_folder(args[:folder])} #{local_public_path}/"
       end
     end
 
     task :to, :folder do |t, args|
       run_locally do
-        execute "rsync -azvv public/#{transmitted_folder(args[:folder])} -e '#{ssh_string}' #{remote_public_path}/"
+        execute "rsync -azvv #{local_public_path}/#{transmitted_folder(args[:folder])} -e '#{ssh_string}' #{remote_public_path}/"
       end
     end
 
