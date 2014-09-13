@@ -79,6 +79,7 @@ And synchronizing any folder from '/public' also possible with passing argument:
 5. Change question in `cap db:reset_db` task
 6. Add diagnostic task for informing about number of releases and size of each (or maybe total release size) and size of /shared
 7. Speed up assets precompiling with http://stackoverflow.com/questions/9016002/speed-up-assetsprecompile-with-rails-3-1-3-2-capistrano-deployment
+8. Add mechanism of partial database dumping for `cap db:data:fetch_fresh_dump`
 
 ## Contributing
 
