@@ -6,7 +6,7 @@ Bunch of capistrano v3.x tasks
 
 Add this line to your application's Gemfile:
 
-    gem 'capistrano-rdws', '0.0.13', github: 'I-de-ya/capistrano-rdws'
+    gem 'capistrano-rdws', '0.0.20', github: 'I-de-ya/capistrano-rdws'
 
 And then execute:
 
@@ -36,6 +36,9 @@ Full list of tasks (some of them are descripted below):
 
     $ cap system:check_free_space
 
+    $ cap uploads:download
+    $ cap uploads:upload
+
 ### Db tasks
 
 #### Data tasks (connected with yaml_db gem)
@@ -46,6 +49,26 @@ Make `rake db:data:dump` task on server:
 Effect of `cap db:data:dump` task plus download `data.yml` into local `db/` application directory:
 
     $ cap db:data:fetch_fresh_dump
+
+### Uploads tasks
+
+Now [rsync](http://en.wikipedia.org/wiki/Rsync) is used by gem for synchronizing uploads.
+
+Synchronize your local `public/uploads` with remote one (download from remote server)
+
+    $ cap uploads:transmit:from
+
+Also you can synchronize any folder from `/public` with passing argument to task, e.g.:
+
+    $ cap uploads:transmit:from[system]
+
+Synchronize remote `public/uploads` with local one (upload on remote server)
+
+    $ cap uploads:transmit:to
+
+And synchronizing any folder from '/public' also possible with passing argument:
+
+    $ cap uploads:transmit:to[system]
 
 ## TODO
 
