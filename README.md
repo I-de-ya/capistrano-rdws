@@ -36,8 +36,10 @@ Full list of tasks (some of them are descripted below):
 
     $ cap system:check_free_space
 
-    $ cap uploads:download
-    $ cap uploads:upload
+    $ cap uploads:transmit:from
+    $ cap uploads:transmit:from[upload_dir]
+    $ cap uploads:transmit:to
+    $ cap uploads:transmit:to[upload_dir]
 
 ### Db tasks
 
