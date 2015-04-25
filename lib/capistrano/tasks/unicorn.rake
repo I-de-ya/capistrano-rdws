@@ -27,21 +27,6 @@ namespace :unicorn do
     test "[ -f #{fetch(:unicorn_pid)} ]"
   end
 
-#   function check_sq {
-#   if [[ -e "${apppath}/${sqpath}" ]]; then
-#     ps -p `cat ${apppath}/${sqpath}` -u >> /dev/null 2>&1
-#     working=$?
-#     if [[ ${working} -ne 0 ]]
-#     then
-#       return 2
-#     fi
-#   else
-#     return 1
-#   fi
-#   return 0
-# }
-
-
   desc 'Start unicorn'
   task :start do
     on roles(:app) do
