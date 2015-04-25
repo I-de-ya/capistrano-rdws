@@ -47,7 +47,7 @@ namespace :unicorn do
     on roles(:app) do
       remove_unused_unicorn_pid
       if unicorn_pid_exists?
-        puts 'Unicorn уже запущен'
+        info 'Unicorn уже запущен'
       else
         run_unicorn
       end
@@ -61,7 +61,7 @@ namespace :unicorn do
       if unicorn_pid_exists?
         execute :kill, "-QUIT `cat #{fetch(:unicorn_pid)}`"
       else
-        puts 'Нет процесса unicorn\'а'
+        info 'Нет процесса unicorn\'а'
       end
     end
   end
@@ -74,7 +74,7 @@ namespace :unicorn do
         execute :kill, "-9 `cat #{fetch(:unicorn_pid)}`"
         execute :rm, fetch(:unicorn_pid)
       else
-        puts 'Нет процесса unicorn\'а'
+        info 'Нет процесса unicorn\'а'
       end
     end
   end
