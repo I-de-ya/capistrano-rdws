@@ -33,14 +33,36 @@ namespace :db do
     task :download_dump do
       require 'active_support/all'
 
-      user = roles(:web)[0].user
-      hostname = roles(:web)[0].hostname
+      filtered_hosts_list = env.filter(roles(:db))
+
+      user = filtered_hosts_list[0].user
+      hostname = filtered_hosts_list[0].hostname
       port = fetch(:ssh_options)[:port]
       port_string = "-P #{port}" if port.present?
       scp_command = ["scp", port_string, "#{user}@#{hostname}:#{current_path}/db/data.yml db/"].compact.join(' ')
 
       run_locally do
         execute scp_command
+        # puts hostname
+        # puts '======='
+        # puts roles(:web)
+        # puts '======='
+        # puts roles(:db)[0]
+        # puts '======='
+        # puts ENV['HOSTS']
+        # puts '======='
+        # puts ENV['--hosts']
+        # puts '======='
+        # puts Capistrano::Configuration.env.methods - Object.methods
+        # puts '======='
+        # puts Capistrano::Configuration.env.backend.methods - Object.methods
+        # puts '======='
+        # # puts Capistrano::Configuration.env.backend.config.command_map
+        # # puts Capistrano::Configuration.env.fetch(:hosts)
+        # puts env.filter(roles(:db))#('hosts')
+        # # puts Capistrano::Configuration::Servers.roles_for(:db)
+        # puts '======='
+        # puts primary roles(:db)
       end
     end
 
@@ -49,8 +71,10 @@ namespace :db do
 
       require 'active_support/all'
 
-      user = roles(:web)[0].user
-      hostname = roles(:web)[0].hostname
+      filtered_hosts_list = env.filter(roles(:db))
+
+      user = filtered_hosts_list[0].user
+      hostname = filtered_hosts_list[0].hostname
       port = fetch(:ssh_options)[:port]
       port_string = "-P #{port}" if port.present?
       scp_command = ["scp", port_string, "db/data.yml #{user}@#{hostname}:#{current_path}/db/"].compact.join(' ')
