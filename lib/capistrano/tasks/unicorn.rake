@@ -6,7 +6,6 @@ namespace :load do
 end
 
 namespace :unicorn do
-
   def run_unicorn
     within release_path do
       execute :bundle, "exec unicorn -D -c #{current_path}/config/unicorn.rb -E #{fetch(:rails_env)}"
@@ -14,13 +13,9 @@ namespace :unicorn do
   end
 
   def remove_unused_unicorn_pid
-    if unicorn_pid_exists?
-      process_exists = capture "ps -p `cat #{fetch(:unicorn_pid)}` -u >> /dev/null 2>&1; echo $?"
-
-      if process_exists != '0'
-        execute :rm, fetch(:unicorn_pid)
-      end
-    end
+    return unless unicorn_pid_exists?
+    process_exists = capture "ps -p `cat #{fetch(:unicorn_pid)}` -u >> /dev/null 2>&1; echo $?"
+    execute :rm, fetch(:unicorn_pid) if process_exists != '0'
   end
 
   def unicorn_pid_exists?
@@ -75,5 +70,4 @@ namespace :unicorn do
       end
     end
   end
-
 end

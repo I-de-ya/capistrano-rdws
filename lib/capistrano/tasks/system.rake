@@ -2,8 +2,7 @@
 namespace :system do
   task :check_free_space do
     on roles(:app) do
-
-      execute "df -h"
+      execute 'df -h'
 
       # put here info about predictable growth of disc space and advice for set keep_releases variable (or maybe in another task)
       # count size of each release

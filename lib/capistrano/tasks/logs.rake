@@ -1,7 +1,7 @@
 # encoding: utf-8
 namespace :logs do
   desc "tail log file from shared_path/log/logfile.log, e.g. 'rake logs:tail[logfile]'"
-  task :tail, :file do |t, args|
+  task :tail, :file do |_t, args|
     if args[:file]
       on roles(:app) do
         execute "tail -f #{shared_path}/log/#{args[:file]}.log"
