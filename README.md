@@ -75,13 +75,16 @@ And synchronizing any folder from '/public' also possible with passing argument:
 ## TODO
 
 1. Test db existance for 'cap db:create'
-2. Add task for synchronising public/uploads and public/system (between any 2 environments)
-3. Add task for download fresh dump (with yaml_db) from production to staging
-4. Add diagnostic tasks for informing about free disc space (and maybe other metrics).
-5. Change question in `cap db:reset_db` task
-6. Add diagnostic task for informing about number of releases and size of each (or maybe total release size) and size of /shared
-7. Speed up assets precompiling with http://stackoverflow.com/questions/9016002/speed-up-assetsprecompile-with-rails-3-1-3-2-capistrano-deployment
-8. Add mechanism of partial database dumping for `cap db:data:fetch_fresh_dump`
+1. Add task for synchronising public/uploads and public/system (between any 2 environments)
+1. Add task for download fresh dump (with yaml_db) from production to staging
+1. Add diagnostic tasks for informing about free disc space (and maybe other metrics).
+1. Change question in `cap db:reset_db` task
+1. Add diagnostic task for informing about number of releases and size of each (or maybe total release size) and size of /shared
+1. Speed up assets precompiling with http://stackoverflow.com/questions/9016002/speed-up-assetsprecompile-with-rails-3-1-3-2-capistrano-deployment
+1. Add mechanism of partial database dumping for `cap db:data:fetch_fresh_dump`
+1. Add dump via `pg_dump`
+1. change `scp` on `rsync`
+1. https://github.com/sgruhier/capistrano-db-tasks/
 
 ## Contributing
 
